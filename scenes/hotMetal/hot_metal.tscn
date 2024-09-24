@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7oukx6tob6el"]
+
+[ext_resource type="Texture2D" uid="uid://djugysrpqqi53" path="res://scenes/resrouces/objects/metal.png" id="1_j4d3s"]
+[ext_resource type="Script" path="res://scenes/hotMetal/hot_metal.gd" id="1_ouqly"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jfops"]
+size = Vector2(128, 127)
+
+[node name="hotMetal" type="StaticBody2D"]
+collision_mask = 0
+script = ExtResource("1_ouqly")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+texture = ExtResource("1_j4d3s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_jfops")

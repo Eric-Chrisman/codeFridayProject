@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dq4ksedfq3b20"]
+
+[ext_resource type="Texture2D" uid="uid://djugysrpqqi53" path="res://scenes/resrouces/objects/metal.png" id="1_rasgc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ue6yc"]
+size = Vector2(129, 126)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_rasgc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_ue6yc")

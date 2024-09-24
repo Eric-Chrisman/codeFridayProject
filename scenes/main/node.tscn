@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://dhxdbl8fignpn"]
+
+[ext_resource type="Script" path="res://scenes/main/node.gd" id="1_1igym"]
+[ext_resource type="PackedScene" uid="uid://dblfgm3h7dg7o" path="res://scenes/player/player.tscn" id="2_d8ceq"]
+[ext_resource type="PackedScene" uid="uid://dq4ksedfq3b20" path="res://scenes/platform/platform.tscn" id="3_cfem7"]
+[ext_resource type="PackedScene" uid="uid://b1dwfcxiyc4cb" path="res://scenes/smartCamera/camera_2d.tscn" id="4_riknm"]
+[ext_resource type="PackedScene" uid="uid://b7oukx6tob6el" path="res://scenes/hotMetal/hot_metal.tscn" id="5_dc04j"]
+
+[node name="main" type="Node"]
+script = ExtResource("1_1igym")
+
+[node name="player" parent="." instance=ExtResource("2_d8ceq")]
+position = Vector2(-6, -224)
+
+[node name="StaticBody2D" parent="." instance=ExtResource("3_cfem7")]
+
+[node name="StaticBody2D2" parent="." instance=ExtResource("3_cfem7")]
+position = Vector2(-131, 0)
+
+[node name="StaticBody2D3" parent="." instance=ExtResource("3_cfem7")]
+position = Vector2(130, 0)
+
+[node name="StaticBody2D4" parent="." instance=ExtResource("3_cfem7")]
+position = Vector2(389, -1)
+
+[node name="StaticBody2D5" parent="." instance=ExtResource("3_cfem7")]
+position = Vector2(-258, 0)
+
+[node name="StaticBody2D6" parent="." instance=ExtResource("3_cfem7")]
+position = Vector2(260, 0)
+
+[node name="Camera2D" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_riknm")]
+position = Vector2(1, 0)
+player = NodePath("../player")
+
+[node name="hotMetal" parent="." instance=ExtResource("5_dc04j")]
+position = Vector2(265, -135)
