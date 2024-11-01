@@ -1,10 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://dblfgm3h7dg7o"]
+[gd_scene load_steps=12 format=3 uid="uid://dblfgm3h7dg7o"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_7htud"]
-[ext_resource type="Texture2D" uid="uid://bt2qvwb1gqlru" path="res://resrouces/player/playerIdle.png" id="2_axtlo"]
-[ext_resource type="Texture2D" uid="uid://b3j6qp5xtnn2s" path="res://resrouces/player/playerWalkOne.png" id="3_teoa0"]
-[ext_resource type="Texture2D" uid="uid://13n6h0t5jq6" path="res://resrouces/player/playerWalkTwo.png" id="4_jcw6t"]
-[ext_resource type="Texture2D" uid="uid://81lyk5xdhaeh" path="res://resrouces/player/playerWalkThree.png" id="5_g35g6"]
+[ext_resource type="Texture2D" uid="uid://bt2qvwb1gqlru" path="res://scenes/resrouces/player/playerIdle.png" id="2_axtlo"]
+[ext_resource type="Texture2D" uid="uid://b3j6qp5xtnn2s" path="res://scenes/resrouces/player/playerWalkOne.png" id="3_teoa0"]
+[ext_resource type="Texture2D" uid="uid://13n6h0t5jq6" path="res://scenes/resrouces/player/playerWalkTwo.png" id="4_jcw6t"]
+[ext_resource type="Texture2D" uid="uid://81lyk5xdhaeh" path="res://scenes/resrouces/player/playerWalkThree.png" id="5_g35g6"]
+[ext_resource type="PackedScene" uid="uid://biqh4bhniu2ko" path="res://scenes/player/audio_stream_player_2d.tscn" id="6_ue2lq"]
+[ext_resource type="AudioStream" uid="uid://hw8nthbcqtw0" path="res://resrouces/soundEffects/hooray-36461.mp3" id="7_sjc7k"]
+[ext_resource type="AudioStream" uid="uid://d11eakdxkyqjs" path="res://resrouces/soundEffects/cartoon-jump-6462.mp3" id="8_pofie"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mf7yf"]
 size = Vector2(30, 121)
@@ -37,10 +40,14 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("aniSprite")]
+[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("aniSprite", "hurtSoundEffect", "horraySoundEffect", "jumpSoundEffect", "myPosition")]
 collision_layer = 0
 script = ExtResource("1_7htud")
 aniSprite = NodePath("AnimatedSprite2D")
+hurtSoundEffect = NodePath("AudioStreamPlayer2D")
+horraySoundEffect = NodePath("AudioStreamPlayer2D2")
+jumpSoundEffect = NodePath("AudioStreamPlayer2D3")
+myPosition = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-3, 0.5)
@@ -59,5 +66,15 @@ shape = SubResource("RectangleShape2D_0qpds")
 sprite_frames = SubResource("SpriteFrames_7ufri")
 animation = &"Idle"
 frame_progress = 0.16576
+
+[node name="AudioStreamPlayer2D" parent="." instance=ExtResource("6_ue2lq")]
+
+[node name="AudioStreamPlayer2D2" parent="." instance=ExtResource("6_ue2lq")]
+stream = ExtResource("7_sjc7k")
+max_polyphony = 666
+
+[node name="AudioStreamPlayer2D3" parent="." instance=ExtResource("6_ue2lq")]
+stream = ExtResource("8_pofie")
+max_polyphony = 2
 
 [connection signal="body_entered" from="hitBox" to="." method="_on_area_2d_body_entered"]

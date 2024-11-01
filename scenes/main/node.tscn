@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/main/node.gd" id="1_1igym"]
 [ext_resource type="PackedScene" uid="uid://dblfgm3h7dg7o" path="res://scenes/player/player.tscn" id="2_d8ceq"]
-[ext_resource type="PackedScene" uid="uid://dq4ksedfq3b20" path="res://scenes/platform/platform.tscn" id="3_cfem7"]
+[ext_resource type="PackedScene" uid="uid://drhsbbdxrnj2d" path="res://scenes/level1/background.tscn" id="2_hen0r"]
 [ext_resource type="PackedScene" uid="uid://b1dwfcxiyc4cb" path="res://scenes/smartCamera/camera_2d.tscn" id="4_riknm"]
 [ext_resource type="PackedScene" uid="uid://b7oukx6tob6el" path="res://scenes/hotMetal/hot_metal.tscn" id="5_dc04j"]
 [ext_resource type="PackedScene" uid="uid://ca47r8onork32" path="res://scenes/flag/flag.tscn" id="6_rr0lh"]
@@ -12,48 +12,57 @@
 script = ExtResource("1_1igym")
 player = NodePath("player")
 
+[node name="background" parent="." instance=ExtResource("2_hen0r")]
+scale = Vector2(0.59742, 0.59742)
+
 [node name="player" parent="." instance=ExtResource("2_d8ceq")]
-position = Vector2(-6, -224)
-
-[node name="StaticBody2D" parent="." instance=ExtResource("3_cfem7")]
-
-[node name="StaticBody2D2" parent="." instance=ExtResource("3_cfem7")]
-position = Vector2(-131, 0)
-
-[node name="StaticBody2D3" parent="." instance=ExtResource("3_cfem7")]
-position = Vector2(130, 0)
-
-[node name="StaticBody2D4" parent="." instance=ExtResource("3_cfem7")]
-position = Vector2(389, -1)
-
-[node name="StaticBody2D5" parent="." instance=ExtResource("3_cfem7")]
-position = Vector2(-258, 0)
-
-[node name="StaticBody2D6" parent="." instance=ExtResource("3_cfem7")]
-position = Vector2(260, 0)
+position = Vector2(-187, -77)
 
 [node name="Camera2D" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_riknm")]
 position = Vector2(1, 0)
 player = NodePath("../player")
 
-[node name="hotMetal" parent="." instance=ExtResource("5_dc04j")]
-position = Vector2(-553, -346)
-
-[node name="hotMetal2" parent="." instance=ExtResource("5_dc04j")]
-visible = false
-position = Vector2(5, 351)
-scale = Vector2(1021.01, 1.14885)
-
 [node name="startingPosition" type="Node2D" parent="."]
 position = Vector2(-258, -140)
 
 [node name="flag" parent="." instance=ExtResource("6_rr0lh")]
-position = Vector2(432, -139)
+position = Vector2(2388, 2443)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="win" parent="CanvasLayer" instance=ExtResource("7_rep0n")]
 visible = false
+
+[node name="hotMetal" parent="." instance=ExtResource("5_dc04j")]
+position = Vector2(114, 365)
+
+[node name="hotMetal2" parent="." instance=ExtResource("5_dc04j")]
+position = Vector2(1111, 381)
+scale = Vector2(10.2109, 1.34664)
+
+[node name="hotMetal3" parent="." instance=ExtResource("5_dc04j")]
+position = Vector2(2090, -49)
+scale = Vector2(0.892765, 1.08774)
+
+[node name="hotMetal4" parent="." instance=ExtResource("5_dc04j")]
+position = Vector2(1852, -296)
+scale = Vector2(0.892765, 1.83793)
+
+[node name="hotMetal5" parent="." instance=ExtResource("5_dc04j")]
+position = Vector2(2330, -299)
+scale = Vector2(0.892765, 1.83793)
+
+[node name="hotMetal6" parent="." instance=ExtResource("5_dc04j")]
+position = Vector2(3018, 328)
+scale = Vector2(1.39033, 0.431172)
+
+[node name="hotMetal7" parent="." instance=ExtResource("5_dc04j")]
+position = Vector2(2776, 1106)
+scale = Vector2(1.39033, 0.431172)
+
+[node name="hotMetal8" parent="." instance=ExtResource("5_dc04j")]
+position = Vector2(3016, 2001)
+scale = Vector2(1.39033, 0.431172)
 
 [connection signal="playerGoal" from="player" to="." method="_on_player_player_goal"]
 [connection signal="playerHit" from="player" to="." method="_on_player_player_hit"]

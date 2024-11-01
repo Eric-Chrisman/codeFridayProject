@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://biqh4bhniu2ko"]
+
+[ext_resource type="AudioStream" uid="uid://cfvao0wtby5sj" path="res://resrouces/soundEffects/short-ah-yell-103092.mp3" id="1_brotk"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_brotk")

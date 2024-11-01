@@ -9,6 +9,7 @@ size = Vector2(129, 126)
 collision_mask = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("1_rasgc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
